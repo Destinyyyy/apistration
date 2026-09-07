@@ -85,7 +85,7 @@ module RSwagCommonResponses
       description: (SwaggerData.get('response.headers.x_cache_expires_in.description') + " #{extra_description}").dup
   end
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def rate_limit_headers
     header 'RateLimit-Limit',
       schema: {
@@ -108,7 +108,6 @@ module RSwagCommonResponses
       description: 'La fin de la période courante (en format timestamp)',
       example: 1637223155
   end
-  # rubocop:enable Metrics/MethodLength
 
   def mandatory_params
     if describe.metadata[:api] == :entreprise
@@ -118,7 +117,7 @@ module RSwagCommonResponses
     end
   end
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def build_dossier_allocataire_absent_rswag_example
     title = 'Dossier allocataire absent'
     detail = "Le dossier allocataire n'a pas été trouvé. Le fournisseur de données est précisé dans 'meta.provider'."
@@ -138,7 +137,6 @@ module RSwagCommonResponses
       title,
       detail
   end
-  # rubocop:enable Metrics/MethodLength
 
   # rubocop:disable Metrics/MethodLength
   def build_rswag_example(error, key = nil)

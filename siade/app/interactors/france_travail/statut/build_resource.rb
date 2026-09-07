@@ -15,7 +15,7 @@ class FranceTravail::Statut::BuildResource < BuildResource
     context.params[:identifiant]
   end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def identite
     {
       nom_naissance: string_value_or_nil(json_body['nom']),
@@ -26,7 +26,6 @@ class FranceTravail::Statut::BuildResource < BuildResource
       date_naissance: format_date(json_body['dateNaissance'])
     }
   end
-  # rubocop:enable Metrics/AbcSize
 
   def contact
     {
@@ -48,7 +47,7 @@ class FranceTravail::Statut::BuildResource < BuildResource
     }
   end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def adresse
     {
       code_postal: string_value_or_nil(json_body['adresse']['codePostal']),
@@ -61,7 +60,6 @@ class FranceTravail::Statut::BuildResource < BuildResource
       ligne_nom: string_value_or_nil(json_body['adresse']['ligneNom'])
     }
   end
-  # rubocop:enable Metrics/AbcSize
 
   def string_value_or_nil(datum)
     return if datum.blank?

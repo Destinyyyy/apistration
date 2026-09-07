@@ -61,7 +61,7 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
         end
 
         describe 'when the rsa is not found' do
-          # rubocop:disable RSpec/ContextWording
+          # rubocop:disable-next RSpec/ContextWording
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
             build_dossier_allocataire_absent_rswag_example
 
@@ -97,11 +97,10 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
               run_test!
             end
           end
-          # rubocop:enable RSpec/ContextWording
         end
 
         response '502', 'Erreur du fournisseur' do
-          # rubocop:disable RSpec/ContextWording
+          # rubocop:disable-next RSpec/ContextWording
           context 'Erreur inattendue' do
             before do
               stub_cnav_404('revenu_solidarite_active')
@@ -113,7 +112,6 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
 
             run_test!
           end
-          # rubocop:enable RSpec/ContextWording
         end
       end
     end

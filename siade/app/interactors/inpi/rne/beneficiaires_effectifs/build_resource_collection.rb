@@ -48,7 +48,7 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
 
   private
 
-  # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
+  # rubocop:disable-next Metrics/MethodLength,Metrics/AbcSize
   def build_modalites(modalites_attributes)
     {
       detention_de_capital: {
@@ -123,5 +123,4 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
       representant_legal_placement_sans_gestion_deleguee: modalites_attributes.try(:[], 'representantLegalPlacementSansGestionDelegue')
     }
   end
-  # rubocop:enable Metrics/MethodLength,Metrics/AbcSize
 end

@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/AbcSize
+# rubocop:disable-next Metrics/AbcSize
 class MI::Associations::BuildResource < BuildResource
   include DJEPVA::DocumentUrlHelper
   include MI::Associations::PayloadParsing
@@ -408,4 +408,3 @@ class MI::Associations::BuildResource < BuildResource
     annee
   end
 end
-# rubocop:enable Metrics/AbcSize

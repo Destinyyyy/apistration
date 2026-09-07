@@ -8,9 +8,8 @@ RSpec.describe 'Privileges', api: :entreprise, type: %i[request swagger] do
       security [{ jwt_bearer_token: [] }]
 
       response '200', 'Liste des droits' do
-        # rubocop:disable RSpec/VariableName
+        # rubocop:disable-next RSpec/VariableName
         let(:Authorization) { "Bearer #{yes_jwt}" }
-        # rubocop:enable RSpec/VariableName
 
         schema type: :object,
           properties: {

@@ -13,7 +13,7 @@ module APIParticulier::FranceConnectable
     )
   end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def civility_parameters_from_france_connect(except: [])
     {
       nom_usage: france_connect_service_user_identity.preferred_username,
@@ -28,7 +28,6 @@ module APIParticulier::FranceConnectable
       france_connect: true
     }.except(*except)
   end
-  # rubocop:enable Metrics/AbcSize
 
   protected
 

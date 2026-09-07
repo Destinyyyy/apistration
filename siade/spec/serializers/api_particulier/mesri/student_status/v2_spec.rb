@@ -13,27 +13,25 @@ RSpec.describe APIParticulier::MESRI::StudentStatus::V2, type: :serializer do
     context 'when resource has inscrit status' do
       let(:body) { read_payload_file('mesri/student_status/with_ine_valid_response.json') }
 
-      # rubocop:disable RSpec/IteratedExpectation
+      # rubocop:disable-next RSpec/IteratedExpectation
       it 'has dateDebutInscription and dateFinInscription in inscriptions items' do
         serialized_resource[:inscriptions].each do |inscription_payload|
           expect(inscription_payload).to have_key(:dateDebutInscription)
           expect(inscription_payload).to have_key(:dateFinInscription)
         end
       end
-      # rubocop:enable RSpec/IteratedExpectation
     end
 
     context 'when resource has admis status' do
       let(:body) { read_payload_file('mesri/student_status/with_ine_valid_response_with_admis_statut.json') }
 
-      # rubocop:disable RSpec/IteratedExpectation
+      # rubocop:disable-next RSpec/IteratedExpectation
       it 'has dateDebutAdmission and dateFinAdmission in inscriptions items' do
         serialized_resource[:inscriptions].each do |inscription_payload|
           expect(inscription_payload).to have_key(:dateDebutAdmission)
           expect(inscription_payload).to have_key(:dateFinAdmission)
         end
       end
-      # rubocop:enable RSpec/IteratedExpectation
     end
   end
 

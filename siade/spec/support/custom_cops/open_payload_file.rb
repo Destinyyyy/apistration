@@ -1,6 +1,6 @@
 require 'rubocop'
 
-# rubocop:disable Style/ClassAndModuleChildren
+# rubocop:disable-next Style/ClassAndModuleChildren
 module RuboCop::Cop::CustomCops
   class OpenPayloadFile < RuboCop::Cop::Base
     MSG = 'Avoid using File.open, File.read, or Rails.root.join with "payloads" in the parameter. Use "read_payload_file" or "open_payload_file" instead'.freeze
@@ -15,4 +15,3 @@ module RuboCop::Cop::CustomCops
     end
   end
 end
-# rubocop:enable Style/ClassAndModuleChildren

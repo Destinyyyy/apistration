@@ -22,7 +22,7 @@ RSpec.describe ADEME::ValidateLimit, type: :validate_param_interactor do
   end
 
   context 'when between 0 and 1_000' do
-    let(:limit)  { '100' }
+    let(:limit) { '100' }
 
     it { is_expected.to be_a_success }
   end

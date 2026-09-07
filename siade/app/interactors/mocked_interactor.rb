@@ -1,7 +1,7 @@
 class MockedInteractor < MakeRequest
   class EndpointNotYetImplemented < StandardError; end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def call
     raise EndpointNotYetImplemented unless Rails.env.staging? || Rails.env.test? || ENV['STAGING'] == 'true'
 
@@ -11,5 +11,4 @@ class MockedInteractor < MakeRequest
 
     track_mock_operation
   end
-  # rubocop:enable Metrics/AbcSize
 end

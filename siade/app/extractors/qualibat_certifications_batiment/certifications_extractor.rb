@@ -5,7 +5,7 @@ class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
 
   private
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def certifications
     certifications_pages.each_with_object([]) do |page, certifications|
       chunks = extract_chunks(page)
@@ -28,7 +28,6 @@ class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
       end
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   def extract_certification_information(certifications, code, page, chunks, chunks_offset)
     certification = find_certification_data_from_nomenclature(code)

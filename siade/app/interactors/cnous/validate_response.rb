@@ -3,7 +3,7 @@ class CNOUS::ValidateResponse < ValidateResponse
   raises ProviderUnprocessableEntityError, reason: :rejected_identifier
   raises ProviderUnprocessableEntityError, reason: :rejected_civility
 
-  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable-next Metrics/CyclomaticComplexity
   def call
     resource_not_found! if http_not_found?
     unprocessable_entity_error! if http_bad_request?
@@ -14,7 +14,6 @@ class CNOUS::ValidateResponse < ValidateResponse
 
     unknown_provider_response!
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 

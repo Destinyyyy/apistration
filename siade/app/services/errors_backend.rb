@@ -33,7 +33,7 @@ class ErrorsBackend
     )
   end
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def provider_hash
     @provider_hash ||= {
       '00' => 'API Entreprise',
@@ -84,5 +84,4 @@ class ErrorsBackend
       '52' => 'DataSubvention'
     }
   end
-  # rubocop:enable Metrics/MethodLength
 end

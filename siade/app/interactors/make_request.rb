@@ -49,7 +49,7 @@ class MakeRequest < ApplicationInteractor
     operation_id.include?('api_particulier_v2')
   end
 
-  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:disable-next Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def api_call_with_error_handling
     response = api_call
 
@@ -99,7 +99,6 @@ class MakeRequest < ApplicationInteractor
 
     fail_to_request_provider!(DnsResolutionError)
   end
-  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   def api_call
     fail NotImplementedError

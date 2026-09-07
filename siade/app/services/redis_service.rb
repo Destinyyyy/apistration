@@ -3,13 +3,12 @@ class RedisService
     safe_run(:set, key, Marshal.dump(object))
   end
 
-  # rubocop:disable Security/MarshalLoad
+  # rubocop:disable-next Security/MarshalLoad
   def restore(key)
     return unless safe_run(:exists?, key)
 
     Marshal.restore(safe_run(:get, key))
   end
-  # rubocop:enable Security/MarshalLoad
 
   %w[
     get
@@ -22,13 +21,12 @@ class RedisService
     end
   end
 
-  # rubocop:disable Naming/MethodParameterName
+  # rubocop:disable-next Naming/MethodParameterName
   def set(key, value, ex: nil, nx: false)
     redis.set(key, value, ex:, nx:)
   rescue *redis_errors
     nil
   end
-  # rubocop:enable Naming/MethodParameterName
 
   def self.redis_options
     AppConfig.config_for(:redis)

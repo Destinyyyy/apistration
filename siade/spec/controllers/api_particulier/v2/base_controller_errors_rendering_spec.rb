@@ -23,11 +23,10 @@ RSpec.describe APIParticulier::V2::BaseController, 'errors rendering' do
   let(:token) { yes_jwt }
   let(:errors) { [error] }
 
-  # rubocop:disable RSpec/InstanceVariable
+  # rubocop:disable-next RSpec/InstanceVariable
   before do
     allow(@controller).to receive(:organizer).and_return(organizer)
   end
-  # rubocop:enable RSpec/InstanceVariable
 
   context 'with NotFoundError' do
     let(:error) { NotFoundError.new('whatever', 'message') }

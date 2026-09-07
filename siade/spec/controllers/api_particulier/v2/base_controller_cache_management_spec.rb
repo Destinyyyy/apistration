@@ -85,9 +85,8 @@ RSpec.describe APIParticulier::V2::BaseController, 'cache_management' do
       end
 
       context 'without the Cache-Control: no-cache request header' do
-        # rubocop:disable RSpec/VerifiedDoubles
+        # rubocop:disable-next RSpec/VerifiedDoubles
         let(:cache_resource_retriever) { double('cache_resource_retriever', from_cache: true, expires_in: 9001) }
-        # rubocop:enable RSpec/VerifiedDoubles
 
         before do
           allow(CacheResourceRetriever).to receive(:call).and_return(cache_resource_retriever)

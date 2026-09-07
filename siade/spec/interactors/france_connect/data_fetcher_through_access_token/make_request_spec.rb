@@ -42,9 +42,8 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::MakeRequest, type: 
   context 'when in staging' do
     before do
       allow(Rails).to receive(:env).and_return('staging'.inquiry)
-      # rubocop:disable RSpec/AnyInstance
+      # rubocop:disable-next RSpec/AnyInstance
       allow_any_instance_of(MockService).to receive(:mock_from_backend).and_return(mocked_data)
-      # rubocop:enable RSpec/AnyInstance
     end
 
     context 'when a stubbed token is provided' do

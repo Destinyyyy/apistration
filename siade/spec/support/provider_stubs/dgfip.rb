@@ -1,6 +1,6 @@
 require_relative '../provider_stubs'
 
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module ProviderStubs::DGFIP
   def mock_dgfip_authenticate
     stub_request(:post, "#{Siade.credentials[:dgfip_apim_base_url]}/token")
@@ -140,4 +140,3 @@ module ProviderStubs::DGFIP
     end
   end
 end
-# rubocop:enable Metrics/ModuleLength

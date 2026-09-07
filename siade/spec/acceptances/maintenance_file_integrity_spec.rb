@@ -20,7 +20,7 @@ RSpec.describe 'Maintenance test file integrity', type: :acceptance do
     test_hour(provider, data['to_hour'])
   end
 
-  # rubocop:disable RSpec/NoExpectationExample
+  # rubocop:disable-next RSpec/NoExpectationExample
   it 'is valid' do
     maintenance_file_data['production'].each do |provider, data|
       fail "Provider '#{provider}' doesn't exist" if ErrorsBackend.instance.provider_code_from_name(provider).nil?
@@ -35,5 +35,4 @@ RSpec.describe 'Maintenance test file integrity', type: :acceptance do
       end
     end
   end
-  # rubocop:enable RSpec/NoExpectationExample
 end

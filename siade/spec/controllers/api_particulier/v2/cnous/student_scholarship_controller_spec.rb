@@ -137,9 +137,8 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
       end
 
       let(:scopes) { all_cnous_scopes }
-      # rubocop:disable RSpec/VariableName
+      # rubocop:disable-next RSpec/VariableName
       let(:dateDeNaissance) { nil }
-      # rubocop:enable RSpec/VariableName
 
       its(:status) { is_expected.to eq(400) }
     end

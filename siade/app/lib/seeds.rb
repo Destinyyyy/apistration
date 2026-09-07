@@ -64,13 +64,12 @@ class Seeds
   def generate_siret
     random_number = 1_000_000_000_000
 
-    # rubocop:disable Style/MultilineBlockChain
+    # rubocop:disable-next Style/MultilineBlockChain
     sum = random_number.digits.each_with_index.map { |digit, index|
       index.even? ? digit * 2 : digit
     }.sum do |value|
       value > 9 ? value - 9 : value
     end
-    # rubocop:enable Style/MultilineBlockChain
 
     last_digit = (10 - (sum % 10)) % 10
 

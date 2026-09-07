@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module RSwagParametersAPIParticulier
   def parameters_identite_pivot_nom_usage(required, api)
     parameter name: :nomUsage,
@@ -129,7 +129,7 @@ module RSwagParametersAPIParticulier
   end
 
   # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def parameters_cnav_identite_pivot_v2
     parameter name: :nomUsage,
       in: :query,
@@ -230,7 +230,5 @@ module RSwagParametersAPIParticulier
       description: SwaggerData.get('cnav.v2.commons.cnav_identite_pivot.codeInseeDepartementNaissance.description'),
       required: false
   end
-  # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 end
-# rubocop:enable Metrics/ModuleLength
