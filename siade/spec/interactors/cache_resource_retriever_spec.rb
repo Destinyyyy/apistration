@@ -87,7 +87,7 @@ RSpec.describe CacheResourceRetriever do
     end
 
     context 'when the call to the provider is a success' do
-      # rubocop:disable RSpec/VerifiedDoubles
+      # rubocop:disable-next RSpec/VerifiedDoubles
       let(:organizer_result) do
         double(
           'retriever',
@@ -96,7 +96,6 @@ RSpec.describe CacheResourceRetriever do
           cacheable: true
         )
       end
-      # rubocop:enable RSpec/VerifiedDoubles
 
       let(:bundled_data) { BundledData.new(data: 'wow data', context: { so: 'meta' }) }
 
@@ -166,7 +165,7 @@ RSpec.describe CacheResourceRetriever do
     end
 
     context 'when the call to the provider is a failure' do
-      # rubocop:disable RSpec/VerifiedDoubles
+      # rubocop:disable-next RSpec/VerifiedDoubles
       let(:organizer_result) do
         double(
           'retriever',
@@ -175,7 +174,6 @@ RSpec.describe CacheResourceRetriever do
           errors:
         )
       end
-      # rubocop:enable RSpec/VerifiedDoubles
 
       let(:errors) { [BadRequestError.new('so bad')] }
 

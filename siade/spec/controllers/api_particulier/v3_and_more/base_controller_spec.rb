@@ -1,10 +1,9 @@
 RSpec.describe APIParticulier::V3AndMore::BaseController do
   before(:all) do
-    # rubocop:disable Style/ClassAndModuleChildren
+    # rubocop:disable-next Style/ClassAndModuleChildren
     module APIParticulier::DummyResourceSerializer
       class V42 < APIParticulier::V3AndMore::BaseSerializer; end
     end
-    # rubocop:enable Style/ClassAndModuleChildren
   end
 
   controller(described_class) do
@@ -193,9 +192,8 @@ RSpec.describe APIParticulier::V3AndMore::BaseController do
       end
 
       context 'without the Cache-Control: no-cache request header' do
-        # rubocop:disable RSpec/VerifiedDoubles
+        # rubocop:disable-next RSpec/VerifiedDoubles
         let(:cache_resource_retriever) { double('cache_resource_retriever', from_cache: true, expires_in: 9001) }
-        # rubocop:enable RSpec/VerifiedDoubles
 
         before do
           allow(CacheResourceRetriever).to receive(:call).and_return(cache_resource_retriever)

@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
   include INPI::RNE::ExtraitRNE::Concerns::Constants
   include INPI::RNE::ExtraitRNE::Concerns::DataFormatters
@@ -222,4 +222,3 @@ module INPI::RNE::ExtraitRNE::Concerns::EntrepriseExtractor
     activities.find { |activity| activity['indicateurPrincipal'] }
   end
 end
-# rubocop:enable Metrics/ModuleLength

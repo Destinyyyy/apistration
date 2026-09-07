@@ -17,7 +17,7 @@ class ExtractProviderFromPath
     path.split('/')[2]
   end
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def provider_from_url_to_humanized
     {
       'insee' => 'INSEE',
@@ -49,5 +49,4 @@ class ExtractProviderFromPath
       'data_subvention' => 'DataSubvention'
     }
   end
-  # rubocop:enable Metrics/MethodLength
 end

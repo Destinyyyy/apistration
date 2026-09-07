@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Rails/DeprecatedActiveModelErrorsMethods
+# rubocop:disable-next Rails/DeprecatedActiveModelErrorsMethods
 RSpec.describe 'OpenAPI file', type: :acceptance do
   context 'API Entreprise v2 definition' do
     let(:definition_path) { 'public/v2/open-api.yml' }
@@ -143,4 +143,3 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
     end
   end
 end
-# rubocop:enable Rails/DeprecatedActiveModelErrorsMethods

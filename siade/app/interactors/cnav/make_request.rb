@@ -54,7 +54,7 @@ class CNAV::MakeRequest < MakeRequest::Get
     request['X-APIPART-FSFINAL'] = context.recipient
   end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def request_params
     {
       nomUsage: transliterate(context.params[:nom_usage]),
@@ -68,7 +68,6 @@ class CNAV::MakeRequest < MakeRequest::Get
       genre: context.params[:sexe_etat_civil]&.upcase
     }.compact
   end
-  # rubocop:enable Metrics/AbcSize
 
   private
 

@@ -14,7 +14,7 @@ class UnprocessableEntityError < ApplicationError
     @meta || {}
   end
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def code
     {
       siren: '00301',
@@ -91,7 +91,6 @@ class UnprocessableEntityError < ApplicationError
       raise KeyError, "#{field} is not a valid field name"
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   def kind
     :wrong_parameter

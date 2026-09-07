@@ -72,11 +72,10 @@ class EncryptedCache
     Marshal.dump(value)
   end
 
-  # rubocop:disable Security/MarshalLoad
+  # rubocop:disable-next Security/MarshalLoad
   def unmarshal(value)
     Marshal.load(value)
   end
-  # rubocop:enable Security/MarshalLoad
 
   def track_redis_error(redis_error, key, options)
     MonitoringService.instance.track_with_added_context(

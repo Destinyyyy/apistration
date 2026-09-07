@@ -6,11 +6,10 @@ RSpec.describe APIParticulier::CivilityParameters do
   end
 
   before(:all) do
-    # rubocop:disable Style/ClassAndModuleChildren
+    # rubocop:disable-next Style/ClassAndModuleChildren
     module APIParticulier::DummyResourceSerializer
       class V42 < APIParticulier::V3AndMore::BaseSerializer; end
     end
-    # rubocop:enable Style/ClassAndModuleChildren
   end
 
   controller(APIParticulier::V3AndMore::BaseController) do

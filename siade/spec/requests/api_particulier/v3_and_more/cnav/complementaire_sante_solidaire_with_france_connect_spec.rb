@@ -61,7 +61,7 @@ RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with Franc
         end
 
         describe 'when the css is not found' do
-          # rubocop:disable RSpec/ContextWording
+          # rubocop:disable-next RSpec/ContextWording
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
             build_dossier_allocataire_absent_rswag_example
 
@@ -87,11 +87,10 @@ RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with Franc
               run_test!
             end
           end
-          # rubocop:enable RSpec/ContextWording
         end
 
         response '502', 'Erreur du fournisseur' do
-          # rubocop:disable RSpec/ContextWording
+          # rubocop:disable-next RSpec/ContextWording
           context 'Erreur inattendue' do
             before do
               stub_cnav_404('complementaire_sante_solidaire')
@@ -103,7 +102,6 @@ RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with Franc
 
             run_test!
           end
-          # rubocop:enable RSpec/ContextWording
         end
       end
     end

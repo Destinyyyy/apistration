@@ -93,7 +93,7 @@ RSpec.describe 'API Particulier CNAV: Allocation enfant handicapé (AEEH) with c
         end
 
         describe 'when the aeeh is not found' do
-          # rubocop:disable RSpec/ContextWording
+          # rubocop:disable-next RSpec/ContextWording
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
             build_dossier_allocataire_absent_rswag_example
 
@@ -129,11 +129,10 @@ RSpec.describe 'API Particulier CNAV: Allocation enfant handicapé (AEEH) with c
               run_test!
             end
           end
-          # rubocop:enable RSpec/ContextWording
         end
 
         response '502', 'Erreur du fournisseur', document: false do
-          # rubocop:disable RSpec/ContextWording
+          # rubocop:disable-next RSpec/ContextWording
           context 'Erreur inattendue' do
             before do
               stub_cnav_404('allocation_enfant_handicape')
@@ -145,7 +144,6 @@ RSpec.describe 'API Particulier CNAV: Allocation enfant handicapé (AEEH) with c
 
             run_test!
           end
-          # rubocop:enable RSpec/ContextWording
         end
 
         common_provider_errors_request('CNAV', CNAV::AllocationEnfantHandicape)

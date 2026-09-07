@@ -103,7 +103,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
             end
 
             describe 'with invalid time period asked' do
-              # rubocop:disable RSpec/ContextWording
+              # rubocop:disable-next RSpec/ContextWording
               response '400', 'Mauvais paramètres d\'appels' do
                 context 'Mois invalide' do
                   let(:annee) { Time.zone.now.year + 1 }
@@ -127,7 +127,6 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
                   run_test!
                 end
               end
-              # rubocop:enable RSpec/ContextWording
             end
 
             response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do

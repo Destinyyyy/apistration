@@ -18,7 +18,7 @@ RSpec.describe APIParticulier::FranceTravail::IndemnitesSerializer::V3, type: :s
 
       it 'has all the data' do
         expect(subject[:data]).to have_key(:identifiant)
-        # rubocop:disable RSpec/IteratedExpectation
+        # rubocop:disable-next RSpec/IteratedExpectation
         subject[:data][:paiements].each do |paiement|
           expect(paiement).to have_key(:date_versement)
           expect(paiement).to have_key(:montant_total)
@@ -26,7 +26,6 @@ RSpec.describe APIParticulier::FranceTravail::IndemnitesSerializer::V3, type: :s
           expect(paiement).to have_key(:montant_aides)
           expect(paiement).to have_key(:montant_autres)
         end
-        # rubocop:enable RSpec/IteratedExpectation
       end
     end
 

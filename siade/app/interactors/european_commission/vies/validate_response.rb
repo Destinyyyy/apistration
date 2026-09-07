@@ -1,7 +1,7 @@
 class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
   declares_no_specific_errors!
 
-  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable-next Metrics/CyclomaticComplexity
   def call
     unknown_provider_response! unless http_ok?
 
@@ -13,7 +13,6 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
 
     handle_valid_json
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 

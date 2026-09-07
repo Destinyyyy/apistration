@@ -1,6 +1,6 @@
 require_relative '../provider_stubs'
 
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module ProviderStubs::GIPMDS
   def mock_gip_mds_authenticate
     stub_request(:post, "#{Siade.credentials[:gip_mds_domain]}/token").and_return(
@@ -82,7 +82,7 @@ module ProviderStubs::GIPMDS
     ]
   end
 
-  # rubocop:disable Metrics/ParameterLists
+  # rubocop:disable-next Metrics/ParameterLists
   def gip_mds_stubbed_payload_for_mensuel(siret:, year:, month:, nature: 'M01', regime_agricole_effectifs: '12.34', regime_general_effectifs: '56.78')
     [
       build_gip_mds_effectif_payload(
@@ -103,7 +103,6 @@ module ProviderStubs::GIPMDS
       )
     ]
   end
-  # rubocop:enable Metrics/ParameterLists
   # rubocop:enable Metrics/MethodLength
 
   def build_gip_mds_effectif_payload(effectifs:, updated_at: nil)
@@ -143,4 +142,3 @@ module ProviderStubs::GIPMDS
     )
   end
 end
-# rubocop:enable Metrics/ModuleLength

@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
   include INPI::RNE::ExtraitRNE::Concerns::Constants
 
@@ -134,4 +134,3 @@ module INPI::RNE::ExtraitRNE::Concerns::DataFormatters
     hash[key] || default
   end
 end
-# rubocop:enable Metrics/ModuleLength

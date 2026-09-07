@@ -11,7 +11,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def mocking_params
     {
       nomNaissance: nom_naissance,
@@ -23,7 +23,6 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
       codeCogInseeCommuneNaissance: code_cog_insee_commune_naissance
     }.compact
   end
-  # rubocop:enable Metrics/AbcSize
 
   def france_connect_mocking_params
     {

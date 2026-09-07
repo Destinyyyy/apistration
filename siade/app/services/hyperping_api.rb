@@ -14,7 +14,7 @@ class HyperpingAPI
     end
   end
 
-  # rubocop:disable Naming/AccessorMethodName
+  # rubocop:disable-next Naming/AccessorMethodName
   def get_monitors
     response = http_wrapper('monitors') do |uri|
       Net::HTTP::Get.new(uri)
@@ -22,7 +22,6 @@ class HyperpingAPI
 
     handle_response(response)
   end
-  # rubocop:enable Naming/AccessorMethodName
 
   def create_monitor(monitor_params)
     response = http_wrapper('monitors') do |uri|

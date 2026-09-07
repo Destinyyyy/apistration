@@ -75,7 +75,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
         end
 
         describe 'when the quotient familial is not found' do
-          # rubocop:disable RSpec/ContextWording
+          # rubocop:disable-next RSpec/ContextWording
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
             context 'Dossier non trouvé MSA' do
               before do
@@ -113,11 +113,10 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
               run_test!
             end
           end
-          # rubocop:enable RSpec/ContextWording
         end
 
         response '502', 'Erreur du fournisseur' do
-          # rubocop:disable RSpec/ContextWording
+          # rubocop:disable-next RSpec/ContextWording
           context 'Erreur inattendue' do
             before do
               stub_cnav_404('quotient_familial_v2')
@@ -129,7 +128,6 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
 
             run_test!
           end
-          # rubocop:enable RSpec/ContextWording
         end
       end
     end

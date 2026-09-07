@@ -4,13 +4,12 @@ class GenerateCodeSampleFromPath
     @staging = staging
   end
 
-  # rubocop:disable Layout/LineContinuationLeadingSpace
+  # rubocop:disable-next Layout/LineContinuationLeadingSpace
   def perform
     "curl -X GET \\\n" \
       "  -H \"Authorization: Bearer $token\" \\\n" \
       "  --url \"#{host}#{interpolated_path}#{query_params}\""
   end
-  # rubocop:enable Layout/LineContinuationLeadingSpace
 
   private
 
@@ -24,7 +23,7 @@ class GenerateCodeSampleFromPath
     end
   end
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def interpolated_path
     path.gsub(/\{[^}]+\}/) do |parameter|
       case parameter[1..-2]
@@ -43,7 +42,6 @@ class GenerateCodeSampleFromPath
       end
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   def query_params
     return '' if path == '/privileges'

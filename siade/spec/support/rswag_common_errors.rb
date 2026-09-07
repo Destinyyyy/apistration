@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module RSwagCommonErrors
   BASELINE_PROVIDER_ERROR_CLASSES = [
     ProviderUnknownError,
@@ -40,7 +40,7 @@ module RSwagCommonErrors
     blacklisted_token_error: -> { BlacklistedTokenError.new('particulier') }
   }.freeze
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def missing_france_connect_bearer_token_request(&block)
     describe 'with a valid API token but no FranceConnect bearer token' do
       let(:Authorization) { nil }
@@ -63,7 +63,6 @@ module RSwagCommonErrors
       end
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   def forbidden_france_connect_request(&block)
     describe 'with valid mandatory params but insufficient privileges on token' do
@@ -194,7 +193,7 @@ module RSwagCommonErrors
     end
   end
 
-  # rubocop:disable RSpec/VerifiedDoubles
+  # rubocop:disable-next RSpec/VerifiedDoubles
   def stubbed_organizer_error(organizer_klass, error)
     let(:organizer) { double('organizer', success?: false, errors: [error], mocked_data: nil, cacheable: false) }
 
@@ -202,6 +201,4 @@ module RSwagCommonErrors
       allow(organizer_klass).to receive(:call).and_return(organizer)
     end
   end
-  # rubocop:enable RSpec/VerifiedDoubles
 end
-# rubocop:enable Metrics/ModuleLength

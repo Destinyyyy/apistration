@@ -1,6 +1,6 @@
 require_relative '../provider_stubs'
 
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module ProviderStubs::CNAV
   # rubocop:disable Metrics/MethodLength
   def stub_cnav_valid(api, siret: valid_siret, extra_params: {})
@@ -135,4 +135,3 @@ module ProviderStubs::CNAV
     Siade.credentials[:"cnav_#{api}_url"]
   end
 end
-# rubocop:enable Metrics/ModuleLength

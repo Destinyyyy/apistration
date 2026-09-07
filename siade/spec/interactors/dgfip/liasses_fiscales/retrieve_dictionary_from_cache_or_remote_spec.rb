@@ -62,11 +62,10 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
 
   describe 'when there is something wrong with the retriever' do
     before do
-      # rubocop:disable RSpec/VerifiedDoubles
+      # rubocop:disable-next RSpec/VerifiedDoubles
       allow(CacheResourceRetriever).to receive(:call).and_return(
         double('retriever', success?: false, errors: [DnsResolutionError.new(provider_name: 'DGFIP - Adélie', message: 'error')])
       )
-      # rubocop:enable RSpec/VerifiedDoubles
     end
 
     it { is_expected.to be_a_success }
