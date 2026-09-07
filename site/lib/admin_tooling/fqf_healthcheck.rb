@@ -1,5 +1,5 @@
 # :nocov:
-# rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+# rubocop:disable-next Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 module AdminTooling
   class FQFHealthcheck
     def initialize(authorization_request)
@@ -80,4 +80,3 @@ module AdminTooling
     end
   end
 end
-# rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity

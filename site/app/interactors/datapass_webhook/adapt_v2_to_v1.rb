@@ -7,7 +7,7 @@ class DatapassWebhook::AdaptV2ToV1 < ApplicationInteractor
 
   private
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def build_data
     {
       'pass' => {
@@ -27,7 +27,6 @@ class DatapassWebhook::AdaptV2ToV1 < ApplicationInteractor
       }
     }
   end
-  # rubocop:enable Metrics/AbcSize
 
   def build_team_members
     build_contacts + [applicant_as_team_member]
