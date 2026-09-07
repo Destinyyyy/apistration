@@ -26,19 +26,17 @@ class EntrepriseWithAttestationsFacade
     @entreprise = build_entreprise
   end
 
-  # rubocop:disable Lint/SuppressedException
+  # rubocop:disable-next Lint/SuppressedException
   def retrieve_attestation_sociale
     @attestation_sociale_url = attestation_sociale_result
   rescue SiadeClientError
   end
-  # rubocop:enable Lint/SuppressedException
 
-  # rubocop:disable Lint/SuppressedException
+  # rubocop:disable-next Lint/SuppressedException
   def retrieve_attestation_fiscale
     @attestation_fiscale_url = attestation_fiscale_result
   rescue SiadeClientError
   end
-  # rubocop:enable Lint/SuppressedException
 
   def build_entreprise
     Entreprise.new(

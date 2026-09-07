@@ -5,7 +5,7 @@ class OpenAPISchemaToExample
     @schema = schema
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength
+  # rubocop:disable-next Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength
   def perform
     case schema['type']
     when 'array'
@@ -29,7 +29,6 @@ class OpenAPISchemaToExample
       'ipsum'
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength
 
   private
 

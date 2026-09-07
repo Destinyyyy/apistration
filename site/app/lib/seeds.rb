@@ -290,7 +290,7 @@ class Seeds
     User.create!(params)
   end
 
-  # rubocop:disable Metrics/ParameterLists
+  # rubocop:disable-next Metrics/ParameterLists
   def create_token(scopes, api, demandeur:, contact_technique: nil, contact_metier: nil, token_params: {}, authorization_request_params: {})
     authorization_request = create_authorization_request(authorization_request_params.merge(api:))
 
@@ -313,7 +313,6 @@ class Seeds
 
     token
   end
-  # rubocop:enable Metrics/ParameterLists
 
   def create_access_logs_for_token(token)
     [
@@ -353,7 +352,7 @@ class Seeds
     UserAuthorizationRequestRole.create!(params)
   end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def create_audit_notifications
     authorization_requests = AuthorizationRequest.where.not(siret: nil).includes(:tokens).limit(3)
 
@@ -379,9 +378,8 @@ class Seeds
       )
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def create_admin_activities
     admin = User.find_by(email: 'api-entreprise@yopmail.com')
     particulier_admin = User.find_by(email: 'api-particulier@yopmail.com')
@@ -407,7 +405,6 @@ class Seeds
         after_attributes: audit&.slice('authorization_request_external_id', 'reason', 'approximate_volume') || {}, created_at: 3.hours.ago }
     ])
   end
-  # rubocop:enable Metrics/AbcSize
 
   # rubocop:disable Lint/UselessConstantScoping
   INSEE_ENDPOINTS = %w[

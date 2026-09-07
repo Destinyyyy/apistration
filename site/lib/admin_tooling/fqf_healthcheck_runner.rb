@@ -1,5 +1,5 @@
 # :nocov:
-# rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/ParameterLists
+# rubocop:disable-next Metrics/AbcSize, Metrics/MethodLength, Metrics/ParameterLists
 module AdminTooling
   class FQFHealthcheckRunner
     attr_reader :external_ids, :editor, :successes, :errors
@@ -179,4 +179,3 @@ module AdminTooling
     end
   end
 end
-# rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Metrics/ParameterLists

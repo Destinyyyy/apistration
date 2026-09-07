@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ClassLength
+# rubocop:disable-next Metrics/ClassLength
 class AbstractEndpoint
   include AbstractAPIClass
   include ActiveModel::Model
@@ -263,4 +263,3 @@ class AbstractEndpoint
     response_schema.dig('properties', name).try(:[], 'properties') || {}
   end
 end
-# rubocop:enable Metrics/ClassLength

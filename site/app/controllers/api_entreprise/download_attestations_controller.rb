@@ -6,7 +6,7 @@ class APIEntreprise::DownloadAttestationsController < APIEntreprise::Authenticat
     @best_token = extract_best_token(@tokens)
   end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def create
     token = Token.find(params.expect(:token_id))
     @attestation_facade = EntrepriseWithAttestationsFacade.new(token:, siren: params[:siren])
@@ -24,7 +24,6 @@ class APIEntreprise::DownloadAttestationsController < APIEntreprise::Authenticat
       redirect_to attestations_path
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   private
 
