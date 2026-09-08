@@ -17,6 +17,7 @@ class EditorDelegationResolver
       .where(editor_id: @user.editor_id)
       .joins(:authorization_request)
       .where(authorization_requests: { siret: @params['recipient'] })
+      .merge(AuthorizationRequest.not_archived_nor_revoked)
 
     @delegation = find_delegation(delegations)
   end

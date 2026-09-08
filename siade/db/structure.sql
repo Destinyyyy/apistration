@@ -33,7 +33,7 @@ CREATE TABLE public.authorization_requests (
     -- intitule character varying,
     -- description character varying,
     -- external_id character varying,
-    -- status character varying,
+    status character varying,
     -- last_update timestamp without time zone,
     -- first_submitted_at timestamp without time zone,
     -- validated_at timestamp without time zone,

@@ -151,6 +151,35 @@ RSpec.describe 'Editor delegation', api: :entreprise do
     end
   end
 
+  context 'with a revoked authorization request' do
+    before do
+      EditorDelegation.create!(editor:, authorization_request:)
+      authorization_request.update!(status: 'revoked')
+    end
+
+    it 'returns 403 with the delegation recipient mismatch error' do
+      get url, params:, headers: headers_params
+
+      expect(response).to have_http_status(:forbidden)
+      expect(response.parsed_body['errors'].first['code']).to eq('00213')
+    end
+  end
+
+  context 'with an archived authorization request' do
+    let!(:delegation) { EditorDelegation.create!(editor:, authorization_request:) }
+
+    before do
+      authorization_request.update!(status: 'archived')
+    end
+
+    it 'returns 403 even when the delegation_id is explicitly provided' do
+      get url, params: params.merge(delegation_id: delegation.id), headers: headers_params
+
+      expect(response).to have_http_status(:forbidden)
+      expect(response.parsed_body['errors'].first['code']).to eq('00213')
+    end
+  end
+
   context 'with a missing or malformed recipient' do
     before do
       EditorDelegation.create!(editor:, authorization_request:)

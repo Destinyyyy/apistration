@@ -177,6 +177,53 @@ RSpec.describe AuthorizationRequest do
     end
   end
 
+  describe '#archive!' do
+    subject(:archive!) { authorization_request.archive! }
+
+    let(:authorization_request) { create(:authorization_request) }
+    let!(:delegation) { create(:editor_delegation, authorization_request:) }
+    let!(:already_revoked_delegation) { create(:editor_delegation, authorization_request:, revoked_at: 2.days.ago) }
+
+    it 'archives the authorization request' do
+      expect { archive! }.to change { authorization_request.reload.status }.to('archived')
+    end
+
+    it 'revokes the active delegations' do
+      expect { archive! }.to change { delegation.reload.revoked_at }.from(nil)
+    end
+
+    it 'leaves the already revoked delegations untouched' do
+      expect { archive! }.not_to change { already_revoked_delegation.reload.revoked_at }
+    end
+  end
+
+  describe '#revoke!' do
+    subject(:revoke!) { authorization_request.revoke! }
+
+    let(:authorization_request) { create(:authorization_request, :with_tokens) }
+    let!(:delegation) { create(:editor_delegation, authorization_request:) }
+
+    it 'revokes the authorization request' do
+      expect { revoke! }.to change { authorization_request.reload.status }.to('revoked')
+    end
+
+    it 'blacklists the token' do
+      expect { revoke! }.to change { authorization_request.token.reload.blacklisted_at }.from(nil)
+    end
+
+    it 'revokes the active delegations' do
+      expect { revoke! }.to change { delegation.reload.revoked_at }.from(nil)
+    end
+
+    context 'without any token' do
+      let(:authorization_request) { create(:authorization_request) }
+
+      it 'still revokes the active delegations' do
+        expect { revoke! }.to change { delegation.reload.revoked_at }.from(nil)
+      end
+    end
+  end
+
   describe '#available_editors_for_delegation' do
     subject { authorization_request.available_editors_for_delegation }
 

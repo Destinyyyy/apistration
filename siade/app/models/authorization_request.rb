@@ -7,4 +7,6 @@ class AuthorizationRequest < ApplicationRecord
   has_one :security_settings,
     class_name: 'AuthorizationRequestSecuritySettings',
     dependent: :destroy
+
+  scope :not_archived_nor_revoked, -> { where(status: nil).or(where.not(status: %w[archived revoked])) }
 end
