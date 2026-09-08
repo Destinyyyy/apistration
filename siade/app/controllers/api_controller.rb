@@ -1,5 +1,6 @@
 class APIController < ApplicationController
   include HandleTokens
+  include CanExposeProviderResponse
   include CanLogRequestsInfoForDebugging
   include LogsRenderedError
 

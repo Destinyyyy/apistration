@@ -83,6 +83,53 @@ RSpec.describe 'Admin: API requests' do
       end
     end
 
+    describe 'displaying the provider response' do
+      let(:provider_body) { { 'message' => 'SIREN inconnu' }.to_json }
+      let(:response_body) do
+        {
+          errors: [{ detail: 'Non trouvé' }],
+          meta: {
+            provider_response: {
+              status: 404,
+              headers: { 'content-type' => 'application/json' },
+              body: provider_body
+            }
+          }
+        }.to_json
+      end
+
+      before do
+        stub_request(:get, %r{#{siade_entreprise_url}/v3/insee/sirene/unites_legales/130025265})
+          .to_return(status: 404, body: response_body)
+      end
+
+      it 'displays the raw provider status, headers and body' do
+        visit admin_api_requests_path(endpoint_uid: '/v3/insee/sirene/unites_legales/{siren}')
+
+        fill_in 'siren', with: '130025265'
+        click_on 'Envoyer la requête'
+
+        expect(page).to have_text('Réponse du fournisseur de données')
+        expect(page).to have_text('404')
+        expect(page).to have_text('content-type')
+        expect(page).to have_text('SIREN inconnu')
+        expect(page).to have_no_text('provider_response')
+      end
+
+      context 'when the provider body is not JSON' do
+        let(:provider_body) { '<html><body>Service indisponible</body></html>' }
+
+        it 'displays the raw body' do
+          visit admin_api_requests_path(endpoint_uid: '/v3/insee/sirene/unites_legales/{siren}')
+
+          fill_in 'siren', with: '130025265'
+          click_on 'Envoyer la requête'
+
+          expect(page).to have_text('<html><body>Service indisponible</body></html>')
+        end
+      end
+    end
+
     describe 'parameter labels' do
       it 'displays technical field name as label' do
         visit admin_api_requests_path(endpoint_uid: '/v3/insee/sirene/unites_legales/{siren}')
