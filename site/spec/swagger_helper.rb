@@ -12,9 +12,11 @@ RSpec.configure do |config|
         description: <<~DESC
           API destinée aux SaaS éditeurs intégrant API Entreprise via le système
           de délégation. Permet à un éditeur authentifié par token éditeur de
-          récupérer la liste de ses délégations, puis de mapper `siret → id`
-          pour passer `X-Delegation-Id` lors des appels métier vers
-          `entreprise.api.gouv.fr`.
+          récupérer la liste de ses délégations, puis d'appeler l'API métier
+          sur `entreprise.api.gouv.fr` en passant le SIRET du bénéficiaire dans
+          le paramètre `recipient`. Le paramètre `delegation_id` n'est requis
+          que pour lever l'ambiguïté lorsque plusieurs délégations actives
+          partagent le même `recipient`.
         DESC
       },
       paths: {},
@@ -34,7 +36,7 @@ RSpec.configure do |config|
             properties: {
               id: {
                 type: :string, format: :uuid,
-                description: "Identifiant unique de la délégation (UUID). À passer dans l'en-tête `X-Delegation-Id` sur les appels métier.",
+                description: 'Identifiant unique de la délégation (UUID). À passer dans le paramètre `delegation_id` des appels métier lorsque plusieurs délégations actives existent pour le même `recipient`.',
                 example: '0d3e1c40-66cb-4d54-9c44-5b53d1c1de5d'
               },
               authorization_request_id: {
