@@ -113,17 +113,33 @@ class AuthorizationRequest < ApplicationRecord
   end
 
   def archive!
-    update!(status: 'archived')
+    transaction do
+      update!(status: 'archived')
+
+      revoke_editor_delegations!
+    end
   end
 
   def revoke!
-    token&.update!(blacklisted_at: Time.zone.now)
+    transaction do
+      token&.update!(blacklisted_at: Time.zone.now)
 
-    update!(status: 'revoked')
+      update!(status: 'revoked')
+
+      revoke_editor_delegations!
+    end
   end
 
   def prolong_token_expecting_updates?
     token&.last_prolong_token_wizard.present? &&
       token.last_prolong_token_wizard.requires_update?
+  end
+
+  private
+
+  def revoke_editor_delegations!
+    revoked_at = Time.zone.now
+
+    editor_delegations.active.each { |delegation| delegation.update!(revoked_at:) }
   end
 end
