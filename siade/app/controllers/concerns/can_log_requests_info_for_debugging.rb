@@ -18,17 +18,13 @@ module CanLogRequestsInfoForDebugging
   end
 
   def provider_payload
-    return {} unless provider_response?
+    return {} if provider_raw_response.blank?
 
-    ProviderRawResponse.new(provider_response).as_debugging_log
+    ProviderRawResponse.new(provider_raw_response).as_debugging_log
   end
 
-  def provider_response?
-    organizer&.context&.response
-  end
-
-  def provider_response
-    organizer.context.response
+  def provider_raw_response
+    organizer&.response || organizer&.retriever&.response
   end
 
   def requests_debugging_enabled?
