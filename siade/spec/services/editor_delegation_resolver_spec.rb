@@ -44,12 +44,42 @@ RSpec.describe EditorDelegationResolver do
       end
     end
 
-    context 'with multiple delegations for the same SIRET' do
+    context 'with an archived authorization request' do
+      before { authorization_request.update!(status: 'archived') }
+
       let(:params) { { 'recipient' => authorization_request.siret } }
 
+      it 'does not resolve' do
+        expect(resolver.delegation).to be_nil
+      end
+    end
+
+    context 'with a revoked authorization request' do
+      before { authorization_request.update!(status: 'revoked') }
+
+      let(:params) { { 'recipient' => authorization_request.siret } }
+
+      it 'does not resolve' do
+        expect(resolver.delegation).to be_nil
+      end
+    end
+
+    context 'with a validated authorization request' do
+      before { authorization_request.update!(status: 'validated') }
+
+      let(:params) { { 'recipient' => authorization_request.siret } }
+
+      it 'resolves the delegation' do
+        expect(resolver.delegation).to eq(delegation)
+      end
+    end
+
+    context 'with multiple delegations for the same SIRET' do
+      let(:params) { { 'recipient' => authorization_request.siret } }
+      let(:other_authorization_request) { AuthorizationRequest.create!(siret: authorization_request.siret, scopes: %w[etablissements]) }
+
       before do
-        other_ar = AuthorizationRequest.create!(siret: authorization_request.siret, scopes: %w[etablissements])
-        EditorDelegation.create!(editor:, authorization_request: other_ar)
+        EditorDelegation.create!(editor:, authorization_request: other_authorization_request)
       end
 
       it 'marks as ambiguous' do
@@ -58,6 +88,18 @@ RSpec.describe EditorDelegationResolver do
 
       it 'does not resolve' do
         expect(resolver.delegation).to be_nil
+      end
+
+      context 'when the other authorization request is archived' do
+        before { other_authorization_request.update!(status: 'archived') }
+
+        it 'is not ambiguous anymore' do
+          expect(resolver.ambiguous).to be false
+        end
+
+        it 'resolves the remaining delegation' do
+          expect(resolver.delegation).to eq(delegation)
+        end
       end
 
       context 'with delegation_id to disambiguate' do
