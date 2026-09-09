@@ -402,8 +402,8 @@ siaf:
       - "Informations générales"
       - "Prochainement"
     meta: &siaf_association_meta
-      date_derniere_mise_a_jour_rna:
-        title: "Date de dernière mise à jour de l'association au RNA"
+      date_derniere_mise_a_jour:
+        title: "Date de dernière mise à jour de l'association"
         type: "string"
         format: "date"
         nullable: true
@@ -577,8 +577,8 @@ siaf:
               type: "integer"
               example: 2024
             example: [2023, 2024, 2025]
-      documents_rna:
-        title: "Pièces justificatives déposées au RNA"
+      documents:
+        title: "Pièces justificatives déposées par l'association"
         description: "Métadonnées des documents déposés par l'association (statuts, listes de dirigeants, procès verbaux, comptes…). Le type et le nombre de documents varient selon l'association."
         type: "array"
         items:

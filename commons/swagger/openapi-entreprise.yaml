@@ -40120,8 +40120,8 @@ paths:
                         required:
                         - etat_transmission_comptes
                         - annees_exercices_comptables_transmis
-                      documents_rna:
-                        title: Pièces justificatives déposées au RNA
+                      documents:
+                        title: Pièces justificatives déposées par l'association
                         description: Métadonnées des documents déposés par l'association
                           (statuts, listes de dirigeants, procès verbaux, comptes…).
                           Le type et le nombre de documents varient selon l'association.
@@ -40191,21 +40191,21 @@ paths:
                     - groupement
                     - etablissements
                     - conformite_comptable
-                    - documents_rna
+                    - documents
                     additionalProperties: false
                   links:
                     type: object
                   meta:
                     type: object
                     properties:
-                      date_derniere_mise_a_jour_rna:
-                        title: Date de dernière mise à jour de l'association au RNA
+                      date_derniere_mise_a_jour:
+                        title: Date de dernière mise à jour de l'association
                         type: string
                         format: date
                         nullable: true
                         example: '2024-05-15'
                     required:
-                    - date_derniere_mise_a_jour_rna
+                    - date_derniere_mise_a_jour
                     additionalProperties: false
                 required:
                 - data
@@ -41078,14 +41078,14 @@ paths:
                   meta:
                     type: object
                     properties:
-                      date_derniere_mise_a_jour_rna:
-                        title: Date de dernière mise à jour de l'association au RNA
+                      date_derniere_mise_a_jour:
+                        title: Date de dernière mise à jour de l'association
                         type: string
                         format: date
                         nullable: true
                         example: '2024-05-15'
                     required:
-                    - date_derniere_mise_a_jour_rna
+                    - date_derniere_mise_a_jour
                     additionalProperties: false
                 required:
                 - data

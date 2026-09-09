@@ -103,7 +103,7 @@ fiche:
           [établissements](/catalogue/insee/etablissements) de l'Insee.
       - q: "Puis-je télécharger les pièces justificatives ?"
         a: |+
-          Chaque entrée de `documents_rna` porte une `url` de téléchargement servie par
+          Chaque entrée de `documents` porte une `url` de téléchargement servie par
           API Entreprise, qui relaie le fichier du fournisseur sans exposer ses accès —
           le même mécanisme que les documents de l'[API Données association](/catalogue/djepva/associations).
           Le lien est valable 24 heures.

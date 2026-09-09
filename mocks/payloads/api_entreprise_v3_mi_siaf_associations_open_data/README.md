@@ -98,7 +98,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2026-04-27"
+      "date_derniere_mise_a_jour": "2026-04-27"
     }
   }
   ```
@@ -216,7 +216,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2026-04-27"
+      "date_derniere_mise_a_jour": "2026-04-27"
     }
   }
   ```
@@ -334,7 +334,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2026-04-27"
+      "date_derniere_mise_a_jour": "2026-04-27"
     }
   }
   ```
@@ -439,7 +439,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2024-11-23"
+      "date_derniere_mise_a_jour": "2024-11-23"
     }
   }
   ```
@@ -562,7 +562,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2026-04-27"
+      "date_derniere_mise_a_jour": "2026-04-27"
     }
   }
   ```

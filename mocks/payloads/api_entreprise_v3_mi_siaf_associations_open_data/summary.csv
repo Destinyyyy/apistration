@@ -76,7 +76,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2026-04-27""
+    ""date_derniere_mise_a_jour"": ""2026-04-27""
   }
 }"
 ,"Association immatriculée au répertoire Sirene, appelée par SIREN","{""siren_or_siret_or_rna"":""388916678""}",200,"{
@@ -156,7 +156,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2026-04-27""
+    ""date_derniere_mise_a_jour"": ""2026-04-27""
   }
 }"
 ,"Association immatriculée au répertoire Sirene, appelée par SIRET","{""siren_or_siret_or_rna"":""38891667800039""}",200,"{
@@ -236,7 +236,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2026-04-27""
+    ""date_derniere_mise_a_jour"": ""2026-04-27""
   }
 }"
 ,"Association dissoute, reconnue d'utilité publique, issue d'une fusion et en défaut de dépôt des comptes","{""siren_or_siret_or_rna"":""W212001234""}",200,"{
@@ -303,7 +303,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2024-11-23""
+    ""date_derniere_mise_a_jour"": ""2024-11-23""
   }
 }"
 ,"Association sans SIRET membre d'une union, accessible uniquement par identifiant RNA","{""siren_or_siret_or_rna"":""W224002133""}",200,"{
@@ -388,7 +388,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2026-04-27""
+    ""date_derniere_mise_a_jour"": ""2026-04-27""
   }
 }"
 ,Association non trouvée,"{""siren_or_siret_or_rna"":""W432543654""}",404,"{

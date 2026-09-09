@@ -152,7 +152,7 @@
           2025
         ]
       },
-      "documents_rna": [
+      "documents": [
         {
           "id": "9b4edadb-89c0-11f1-9645-27365eec5438",
           "type": "Statuts",
@@ -179,7 +179,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2026-04-27"
+      "date_derniere_mise_a_jour": "2026-04-27"
     }
   }
   ```
@@ -351,7 +351,7 @@
           2025
         ]
       },
-      "documents_rna": [
+      "documents": [
         {
           "id": "9b4edadb-89c0-11f1-9645-27365eec5438",
           "type": "Statuts",
@@ -378,7 +378,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2026-04-27"
+      "date_derniere_mise_a_jour": "2026-04-27"
     }
   }
   ```
@@ -550,7 +550,7 @@
           2025
         ]
       },
-      "documents_rna": [
+      "documents": [
         {
           "id": "9b4edadb-89c0-11f1-9645-27365eec5438",
           "type": "Statuts",
@@ -577,7 +577,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2026-04-27"
+      "date_derniere_mise_a_jour": "2026-04-27"
     }
   }
   ```
@@ -741,7 +741,7 @@
           2022
         ]
       },
-      "documents_rna": [
+      "documents": [
         {
           "id": "af12cc31-89c7-11f1-9645-27365eec5438",
           "type": "Statuts",
@@ -768,7 +768,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2024-11-23"
+      "date_derniere_mise_a_jour": "2024-11-23"
     }
   }
   ```
@@ -919,7 +919,7 @@
         "etat_transmission_comptes": "En règle",
         "annees_exercices_comptables_transmis": []
       },
-      "documents_rna": [
+      "documents": [
         {
           "id": "df9ee99e-89c7-11f1-9645-27365eec5438",
           "type": "Procès verbal",
@@ -935,7 +935,7 @@
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2026-04-27"
+      "date_derniere_mise_a_jour": "2026-04-27"
     }
   }
   ```

@@ -127,7 +127,7 @@ payload: |-
           2022
         ]
       },
-      "documents_rna": [
+      "documents": [
         {
           "id": "af12cc31-89c7-11f1-9645-27365eec5438",
           "type": "Statuts",
@@ -154,6 +154,6 @@ payload: |-
     },
     "links": {},
     "meta": {
-      "date_derniere_mise_a_jour_rna": "2024-11-23"
+      "date_derniere_mise_a_jour": "2024-11-23"
     }
   }

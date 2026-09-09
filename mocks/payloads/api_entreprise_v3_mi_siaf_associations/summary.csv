@@ -130,7 +130,7 @@ Titre,Description,Paramètres,Status,Réponse
         2025
       ]
     },
-    ""documents_rna"": [
+    ""documents"": [
       {
         ""id"": ""9b4edadb-89c0-11f1-9645-27365eec5438"",
         ""type"": ""Statuts"",
@@ -157,7 +157,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2026-04-27""
+    ""date_derniere_mise_a_jour"": ""2026-04-27""
   }
 }"
 ,"Association immatriculée au répertoire Sirene, appelée par SIREN","{""siren_or_siret_or_rna"":""388916678""}",200,"{
@@ -291,7 +291,7 @@ Titre,Description,Paramètres,Status,Réponse
         2025
       ]
     },
-    ""documents_rna"": [
+    ""documents"": [
       {
         ""id"": ""9b4edadb-89c0-11f1-9645-27365eec5438"",
         ""type"": ""Statuts"",
@@ -318,7 +318,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2026-04-27""
+    ""date_derniere_mise_a_jour"": ""2026-04-27""
   }
 }"
 ,"Association immatriculée au répertoire Sirene, appelée par SIRET","{""siren_or_siret_or_rna"":""38891667800039""}",200,"{
@@ -452,7 +452,7 @@ Titre,Description,Paramètres,Status,Réponse
         2025
       ]
     },
-    ""documents_rna"": [
+    ""documents"": [
       {
         ""id"": ""9b4edadb-89c0-11f1-9645-27365eec5438"",
         ""type"": ""Statuts"",
@@ -479,7 +479,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2026-04-27""
+    ""date_derniere_mise_a_jour"": ""2026-04-27""
   }
 }"
 ,"Association dissoute, reconnue d'utilité publique, issue d'une fusion et en défaut de dépôt des comptes","{""siren_or_siret_or_rna"":""W212001234""}",200,"{
@@ -605,7 +605,7 @@ Titre,Description,Paramètres,Status,Réponse
         2022
       ]
     },
-    ""documents_rna"": [
+    ""documents"": [
       {
         ""id"": ""af12cc31-89c7-11f1-9645-27365eec5438"",
         ""type"": ""Statuts"",
@@ -632,7 +632,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2024-11-23""
+    ""date_derniere_mise_a_jour"": ""2024-11-23""
   }
 }"
 ,"Association sans SIRET membre d'une union, accessible uniquement par identifiant RNA","{""siren_or_siret_or_rna"":""W224002133""}",200,"{
@@ -745,7 +745,7 @@ Titre,Description,Paramètres,Status,Réponse
       ""etat_transmission_comptes"": ""En règle"",
       ""annees_exercices_comptables_transmis"": []
     },
-    ""documents_rna"": [
+    ""documents"": [
       {
         ""id"": ""df9ee99e-89c7-11f1-9645-27365eec5438"",
         ""type"": ""Procès verbal"",
@@ -761,7 +761,7 @@ Titre,Description,Paramètres,Status,Réponse
   },
   ""links"": {},
   ""meta"": {
-    ""date_derniere_mise_a_jour_rna"": ""2026-04-27""
+    ""date_derniere_mise_a_jour"": ""2026-04-27""
   }
 }"
 ,Association non trouvée,"{""siren_or_siret_or_rna"":""W432543654""}",404,"{
