@@ -17,13 +17,11 @@ RSpec.describe APIController, 'expose provider response' do
     end
 
     def binary_body
-      @organizer = OpenStruct.new(
-        context: OpenStruct.new(
-          response: OpenStruct.new(
-            headers: { 'Content-Type' => 'application/pdf' },
-            body: "%PDF-1.4\xC3\x28".dup.force_encoding(Encoding::ASCII_8BIT),
-            status: 200
-          )
+      @organizer = Interactor::Context.build(
+        response: OpenStruct.new(
+          headers: { 'Content-Type' => 'application/pdf' },
+          body: "%PDF-1.4\xC3\x28".dup.force_encoding(Encoding::ASCII_8BIT),
+          status: 200
         )
       )
 
@@ -35,13 +33,11 @@ RSpec.describe APIController, 'expose provider response' do
     end
 
     def organizer
-      @organizer ||= OpenStruct.new(
-        context: OpenStruct.new(
-          response: OpenStruct.new(
-            headers: { 'Content-Type' => 'application/json' },
-            body: { 'message' => 'I like providers\' tea' }.to_json,
-            status: 418
-          )
+      @organizer ||= Interactor::Context.build(
+        response: OpenStruct.new(
+          headers: { 'Content-Type' => 'application/json' },
+          body: { 'message' => 'I like providers\' tea' }.to_json,
+          status: 418
         )
       )
     end

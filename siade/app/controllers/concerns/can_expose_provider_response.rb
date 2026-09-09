@@ -24,10 +24,6 @@ module CanExposeProviderResponse
     nil
   end
 
-  def provider_raw_response
-    @organizer&.context&.response
-  end
-
   def json_response?
     response.media_type.to_s.include?('json')
   end
