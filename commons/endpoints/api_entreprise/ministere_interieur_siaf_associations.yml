@@ -108,10 +108,11 @@ fiche:
           le même mécanisme que les documents de l'[API Données association](/catalogue/djepva/associations).
           Le lien est valable 24 heures.
 
-          En revanche, **les binaires ne sont pas encore chargés côté fournisseur** : sur
-          l'environnement de test, ces liens ne servent aucun fichier. Le volume
-          documentaire du RNA étant le principal apport de cette API, c'est le point que
-          nous suivons en priorité avec le Ministère de l'Intérieur.
+          Sur l'environnement de test, l'API est simulée et ces liens ne servent aucun
+          fichier. Le bac à sable du fournisseur sert désormais un document factice pour
+          chaque pièce : le téléchargement sera validé de bout en bout lors du raccordement
+          réel. Le volume documentaire du RNA étant le principal apport de cette API, c'est
+          le point que nous suivons en priorité avec le Ministère de l'Intérieur.
       - q: "Pourquoi certaines données sont-elles vides ?"
         a: |+
           Une partie des informations est **déclarative** : elle n'est renseignée que

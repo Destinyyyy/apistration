@@ -40174,10 +40174,9 @@ paths:
                               example: 2018
                             url:
                               title: URL de téléchargement du document
-                              description: 'Lien de téléchargement servi par API Entreprise,
-                                valable 24 heures. Les binaires ne sont pas encore
-                                chargés côté fournisseur : ces liens ne servent aucun
-                                fichier sur l''environnement de test.'
+                              description: Lien de téléchargement servi par API Entreprise,
+                                valable 24 heures. Sur l'environnement de test, l'API
+                                est simulée et ces liens ne servent aucun fichier.
                               type: string
                               nullable: true
                               example: https://entreprise.api.gouv.fr/proxy/files/8f1c0a2e-6b34-4d95-9f77-2c5a1e0b7d43
