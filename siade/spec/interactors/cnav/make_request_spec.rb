@@ -144,15 +144,31 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
     end
 
     context 'when sexe_etat_civil is blank (non-regression test)' do
-      let(:params) { super().merge(sexe_etat_civil: nil) }
-
       let!(:stubbed_request) do
-        stub_request(:get, Siade.credentials[:cnav_complementaire_sante_solidaire_url])
-          .with(query: hash_excluding(:genre))
-          .to_return(status: 200, body: read_payload_file('cnav/complementaire_sante_solidaire/make_request_valid.json'))
+        stub_request(:get, Siade.credentials[:cnav_complementaire_sante_solidaire_url]).with(
+          query: {
+            codeLieuNaissance: '17300',
+            codePaysNaissance: '99100',
+            dateNaissance: '1980-06-12',
+            listePrenoms: 'JEAN-PASCAL',
+            nomNaissance: 'CHAMPION'
+          }
+        ).to_return(
+          status: 200,
+          body: read_payload_file('cnav/complementaire_sante_solidaire/make_request_valid.json')
+        )
       end
 
-      it { is_expected.to be_a_success }
+      [nil, '', ' '].each do |blank_sexe_etat_civil|
+        context "with #{blank_sexe_etat_civil.inspect}" do
+          let(:params) { super().merge(sexe_etat_civil: blank_sexe_etat_civil) }
+
+          it 'omits the genre param instead of sending it empty' do
+            expect(make_call).to be_a_success
+            expect(stubbed_request).to have_been_requested
+          end
+        end
+      end
     end
   end
 
