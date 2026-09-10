@@ -21,16 +21,15 @@ ne parle jamais directement à une caisse.
 API-SECU ne détient aucune donnée métier. Il reçoit une identité, la
 contrôle, la fait transformer en NIR (numéro d'inscription au
 répertoire), trouve la caisse compétente, lui pose la question et
-relaie sa réponse. Il adapte et enrichit les appels au passage
-(en-têtes, contrôles de saisie) mais n'applique aucune règle métier :
-c'est un passe-plat. Nos routes le nomment `dss` (`/v3/dss/...`).
+relaie sa réponse. Nos routes le nomment `dss` (`/v3/dss/...`).
 
-Les contrôles de saisie sont faits par API-SECU lui-même, avant toute
-identification. Le sexe en est un : absent ou vide, l'appel est refusé
-avec un 400, quelle que soit la qualité du reste de l'identité. C'est
-pour cette raison que le paramètre redevient obligatoire sur nos
-endpoints, après avoir été rendu optionnel en avril 2026 : en pratique
-il ne l'a jamais été.
+API-SECU applique ses propres règles métier sur les paramètres avant de
+passer la main au SNGI pour l'identification. Ces règles ne sont pas
+celles de l'identification : le sexe, par exemple, est aujourd'hui
+obligatoire pour API-SECU alors qu'il ne pèse presque rien dans le
+matching du SNGI. Un paramètre peut donc être refusé par le guichet
+sans que cela dise quoi que ce soit sur les chances d'identifier la
+personne.
 
 ### SNGI
 
@@ -143,12 +142,13 @@ Particulier est dans `siade/app/interactors/cnav/`.
 
 ## Ce qu'API-SECU ne fait pas
 
-API-SECU n'applique aucun filtre métier. Le filtrage par âge des
-enfants sur la participation familiale EAJE (moins de 7 ans pour les
-crèches) est appliqué par API Particulier, pas par le guichet ni par
-les caisses. L'évolution envisagée pour les garderies scolaires est un
-paramètre d'intervalle d'âge porté par l'habilitation ; la CNAF et la
-MSA doivent confirmer qu'elles peuvent le prendre en charge.
+API-SECU ne filtre pas les données renvoyées par les caisses : c'est un
+passe-plat. Le filtrage par âge des enfants sur la participation
+familiale EAJE (moins de 7 ans pour les crèches) est appliqué par API
+Particulier, pas par le guichet ni par les caisses. L'évolution
+envisagée pour les garderies scolaires est un paramètre d'intervalle
+d'âge porté par l'habilitation ; la CNAF et la MSA doivent confirmer
+qu'elles peuvent le prendre en charge.
 
 ## Endpoints concernés
 
