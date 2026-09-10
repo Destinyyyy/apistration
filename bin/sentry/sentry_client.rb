@@ -39,7 +39,7 @@ class SentryClient
   def events(issue_id, page: 0, full: false)
     response = @connection.get(
       "/api/0/issues/#{issue_id}/events/",
-      { full: full, cursor: "0:0:#{page * 100}" }
+      { full: full, cursor: "0:#{page * 100}:0" }
     )
     response.body
   end
