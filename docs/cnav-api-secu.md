@@ -5,9 +5,9 @@ caisses de la Sécurité sociale (CNAV, SNGI, RNCPS, CNAF, MSA). Ce
 document ne parle pas d'implémentation ; pour le code, partir de
 `siade/app/organizers/cnav/`.
 
-Les points marqués **À confirmer** n'ont pas été validés par le
-fournisseur de données. Les autres l'ont été, notamment lors du point
-CNAV du 10 septembre 2026.
+Les points ci-dessous ont été validés avec le fournisseur de données,
+notamment lors du point CNAV du 10 septembre 2026, ou recoupés avec
+les tickets Linear et l'historique du projet.
 
 ## Les acteurs
 
@@ -53,10 +53,17 @@ CNAV. À partir du NIR, il indique le régime et la caisse de rattachement
 de la personne. Une même personne peut avoir plusieurs rattachements,
 potentiellement sur plusieurs caisses.
 
-Les caisses y remontent aussi en temps réel les droits ouverts pour les
-prestations. Le RNCPS est donc à la fois l'annuaire de rattachement
-pour tous les endpoints et la source de données des endpoints de statut
-de prestation (statut RSA, statut AAH, prime d'activité, etc.).
+Les caisses y remontent aussi les droits ouverts pour les prestations,
+mais les prestations elles-mêmes restent stockées chez chaque caisse.
+Pour les statuts de prestation (statut RSA, statut AAH, prime
+d'activité, etc.), le RNCPS sert donc d'annuaire : API-SECU y lit les
+rattachements puis interroge la ou les caisses concernées, qui
+répondent avec leurs prestations.
+
+La complémentaire santé solidaire est l'exception : le RNCPS répond
+lui-même, avec les droits que la CNAM (Assurance maladie) et la MSA
+lui remontent, la CNAM n'étant pas encore branchée en direct sur
+API-SECU.
 
 ### CNAF et MSA
 
@@ -99,7 +106,9 @@ Les deux caisses ne fonctionnent pas au même rythme :
    rattachement. Aucun rattachement : « allocataire non référencé auprès
    des caisses éligibles ».
 6. Lecture de la donnée, selon l'endpoint :
-   - statut de prestation : dans le RNCPS lui-même ;
+   - statut de prestation : auprès de la ou des caisses de
+     rattachement, sauf la complémentaire santé solidaire lue dans le
+     RNCPS lui-même ;
    - quotient familial et participation familiale EAJE : auprès de la
      CAF ou de la MSA, selon le rattachement.
 7. API-SECU relaie la réponse en indiquant la caisse qui a répondu.
@@ -124,6 +133,14 @@ pour l'appelant.
 | Contrôle de saisie du guichet | format du nom, commune de naissance inconnue, sexe absent, département inconnu | corriger les paramètres |
 | Identification (SNGI, RNCPS) | personne introuvable, aucun rattachement | vérifier l'identité, ou fermer le dossier |
 | Caisse (CAF, MSA) | dossier absent, période hors historique, mauvais routage | rien sur l'identité ; changer la période ou réessayer plus tard |
+
+Sur les statuts de prestation, une caisse qui ne répond pas dans la
+chaîne produit une erreur RNCPS « dossier absent » alors que la
+personne est bénéficiaire. Le fournisseur en a confirmé la cause en
+2026 sans donner de délai de correction ; le quotient familial et
+l'EAJE ne sont pas concernés. Par ailleurs un droit ouvert peut mettre
+jusqu'à 30 jours à apparaître dans l'API, délai avéré sur la
+complémentaire santé solidaire et suspecté sur les autres statuts.
 
 Sur le quotient familial, deux refus de la caisse ne sont pas des
 erreurs d'identité et sont restitués comme tels :
@@ -163,7 +180,7 @@ deux modalités d'appel, `/identite` (identité pivot) et
 | Quotient familial et composition familiale | `/v3/dss/quotient_familial/{identite,france_connect}` |
 | Participation familiale EAJE (prestation de service unique) | `/v3/dss/participation_familiale_eaje/{identite,france_connect}` |
 
-### Données RNCPS
+### Statuts de prestation, données CAF / MSA via le RNCPS
 
 | Prestation | Route v3 |
 |---|---|
@@ -173,18 +190,18 @@ deux modalités d'appel, `/identite` (identité pivot) et
 | Allocation de soutien familial | `/v3/dss/allocation_soutien_familial/{identite,france_connect}` |
 | Allocation de rentrée scolaire | `/v3/dss/allocation_rentree_scolaire/{identite,france_connect}` |
 | Allocation d'éducation de l'enfant handicapé | `/v3/dss/allocation_enfant_handicape/{identite,france_connect}` |
+
+Les fiches publiques de ces endpoints disent les données « issues du
+RNCPS ». C'est un raccourci : le RNCPS donne le rattachement, la
+prestation vient de la caisse.
+
+### Statut de prestation, données RNCPS
+
+| Prestation | Route v3 |
+|---|---|
 | Complémentaire santé solidaire | `/v3/dss/complementaire_sante_solidaire/{identite,france_connect}` |
 
-**À confirmer** : la source de la complémentaire santé solidaire. Les
-fiches publiques la présentent comme issue du RNCPS, et l'historique du
-projet la traite comme le cas où le RNCPS répond directement en tant
-que régime. La C2S étant une prestation de l'Assurance maladie et non
-des caisses d'allocations familiales, cette origine reste à valider
-avec la CNAV. Une API distincte d'éligibilité à la C2S, fondée sur les
-ressources, figure par ailleurs dans la feuille de route CNAV.
-
-**À confirmer** : le RNCPS comme source directe des statuts de
-prestation. Les fiches publiques l'affirment. La CNAV a précisé que le
-RNCPS détermine les affiliations et que les prestations restent
-stockées chez chaque caisse ; reste à établir si les statuts sont lus
-dans le répertoire ou chez la caisse au travers de celui-ci.
+Le RNCPS répond directement, alimenté par la CNAM pour le régime
+général et la MSA pour le régime agricole. Une API distincte
+d'éligibilité à la C2S, fondée sur les ressources, figure par ailleurs
+dans la feuille de route CNAV.
