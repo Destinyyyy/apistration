@@ -55,8 +55,11 @@ Les caisses qui possèdent réellement les dossiers allocataires :
 - MSA : régime agricole.
 
 C'est chez elles que vivent le quotient familial, la composition
-familiale et l'adresse. Le RNCPS ne porte que les droits, pas ces
-données de dossier.
+familiale, l'adresse et la participation familiale EAJE. Ces
+informations ne remontent pas au RNCPS : le répertoire sait qu'une
+personne a un droit ouvert à une prestation, il ne connaît pas le
+contenu de son dossier. Pour les obtenir, API-SECU doit interroger la
+caisse elle-même.
 
 Les deux caisses ne fonctionnent pas au même rythme :
 
@@ -80,8 +83,8 @@ Les deux caisses ne fonctionnent pas au même rythme :
    des caisses éligibles ».
 5. Lecture de la donnée, selon l'endpoint :
    - statut de prestation : dans le RNCPS lui-même ;
-   - quotient familial : auprès de la CAF ou de la MSA, selon le
-     rattachement.
+   - quotient familial et participation familiale EAJE : auprès de la
+     CAF ou de la MSA, selon le rattachement.
 6. API-SECU relaie la réponse en indiquant la caisse qui a répondu.
    API Particulier la restitue, en nommant CAF ou MSA sur le quotient
    familial.
