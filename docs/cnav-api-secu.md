@@ -14,11 +14,11 @@ fournisseur de données.
 
 Guichet unique de la Sécurité sociale, exploité par la CNAV (Caisse
 nationale d'assurance vieillesse). C'est le seul interlocuteur d'API
-Particulier pour les prestations sociales : on ne parle jamais
+Particulier pour les prestations sociales et le quotient familial : on ne parle jamais
 directement à une caisse.
 
 API-SECU ne détient aucune donnée métier. Il reçoit une identité, la
-vérifie, trouve la caisse compétente, lui pose la question et relaie sa
+vérifie, la transforme en NIR (Numéro d'inscription au répertoire), trouve la caisse compétente, lui pose la question et relaie sa
 réponse. Nos routes le nomment `dss` (`/v3/dss/...`).
 
 ### SNGI
@@ -33,7 +33,7 @@ Sans cette conversion, aucune caisse ne peut être interrogée.
 
 C'est ce qui explique le poids inégal des paramètres d'identification :
 le nom de naissance, l'année de naissance et le lieu de naissance
-suffisent souvent à trouver la personne, et leur absence fait chuter le
+suffisent souvent à trouver la personne si elle n'a pas d'homonyme, et leur absence fait chuter le
 taux d'identification.
 
 ### RNCPS
@@ -42,7 +42,7 @@ Répertoire national commun de la protection sociale, exploité par la
 CNAV. À partir du NIR, il indique le régime et la caisse de rattachement
 de la personne.
 
-Les caisses y remontent aussi en temps réel les droits ouverts. Le RNCPS
+Les caisses y remontent aussi en temps réel les droits ouverts pour les prestations. Le RNCPS
 est donc à la fois l'annuaire de rattachement pour tous les endpoints et
 la source de données des endpoints de statut de prestation (statut RSA,
 statut AAH, prime d'activité, etc.).
@@ -113,6 +113,7 @@ deux modalités d'appel, `/identite` (identité pivot) et
 | Prestation | Route v3 |
 |---|---|
 | Quotient familial et composition familiale | `/v3/dss/quotient_familial/{identite,france_connect}` |
+| Participation familiale EAJE (prestation de service unique) | `/v3/dss/participation_familiale_eaje/{identite,france_connect}`|
 
 ### Données RNCPS
 
@@ -124,7 +125,6 @@ deux modalités d'appel, `/identite` (identité pivot) et
 | Allocation de soutien familial | `/v3/dss/allocation_soutien_familial/{identite,france_connect}` |
 | Allocation de rentrée scolaire | `/v3/dss/allocation_rentree_scolaire/{identite,france_connect}` |
 | Allocation d'éducation de l'enfant handicapé | `/v3/dss/allocation_enfant_handicape/{identite,france_connect}` |
-| Participation familiale EAJE (prestation de service unique) | `/v3/dss/participation_familiale_eaje/{identite,france_connect}` |
 | Complémentaire santé solidaire | `/v3/dss/complementaire_sante_solidaire/{identite,france_connect}` |
 
 **À confirmer** : la source de la complémentaire santé solidaire. Les
